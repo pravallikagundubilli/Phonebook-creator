@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter import messagebox
 
 
-#PythonGeeks - Initialize window
 root = Tk()
 root.geometry('700x550')
 root.config(bg = '#d3f3f5')
@@ -25,7 +24,6 @@ Name = StringVar()
 Number = StringVar()
 
 
-#PythonGeeks - create frame
 frame = Frame(root)
 frame.pack(side = RIGHT)
 
@@ -36,7 +34,6 @@ scroll.pack(side=RIGHT, fill=Y)
 select.pack(side=LEFT,  fill=BOTH, expand=1)
 
 
-#PythonGeeks - function to get select value
 
 def Selected():
 	print("hello",len(select.curselection()))
@@ -45,7 +42,6 @@ def Selected():
 	else:
 		return int(select.curselection()[0])
     
-#PythonGeeks -function to add new contact
 def AddContact():
     if Name.get()!="" and Number.get()!="":
         contactlist.append([Name.get() ,Number.get()])
@@ -58,7 +54,6 @@ def AddContact():
         messagebox.showerror("Error","Please fill the information")
 
 
-# fun to edit existing contact
 
 def UpdateDetail():
 	if Name.get() and Number.get():
@@ -85,7 +80,6 @@ def EntryReset():
 	Name.set('')
 	Number.set('')
 
-#PythonGeeks- function to delete selected contact
 def Delete_Entry():
     if len(select.curselection())!=0:
         result=messagebox.askyesno('Confirmation','You Want to Delete Contact\n Which you selected')
@@ -96,14 +90,12 @@ def Delete_Entry():
         messagebox.showerror("Error", 'Please select the Contact')
 
    
-# func to view contact
 def VIEW():
     NAME, PHONE = contactlist[Selected()]
     Name.set(NAME)
     Number.set(PHONE)
         
 
-#PythonGeeks- function to exit game window   
 def EXIT():
     root.destroy()
 
@@ -115,8 +107,7 @@ def Select_set() :
         select.insert (END, name)
 Select_set()
 
-
-#PythonGeeks - define buttons labels and entry widget 
+ 
 Label(root, text = 'Name', font=("Times new roman",25,"bold"), bg = 'SlateGray3').place(x= 30, y=20)
 Entry(root, textvariable = Name, width=30).place(x= 200, y=30)
 Label(root, text = 'Contact No.', font=("Times new roman",22,"bold"),bg = 'SlateGray3').place(x= 30, y=70)
